@@ -1,6 +1,7 @@
 package com.didamoni.persona_im.presentation.screen.chat
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
@@ -23,30 +25,59 @@ import androidx.compose.ui.unit.dp
 import com.didamoni.persona_im.presentation.ui.theme.PersonaIMTheme
 
 @Composable
-fun ChannelInfoScreen() {
-    var state by remember { mutableStateOf(Unit) }
-    ChannelInfoScreenContent(state)
+fun ChannelInfoScreen(
+    channelId: String,
+    onClickFileAttachments: () -> Unit,
+    onClickMediaAttachments: () -> Unit,
+    onClickBack: () -> Unit
+) {
+    var state by remember { mutableStateOf(channelId) }
+    ChannelInfoScreenContent(state, onClickFileAttachments, onClickMediaAttachments, onClickBack)
 }
 
 @Composable
 private fun ChannelInfoScreenContent(
-    state: Unit // use your screen's ViewState
+    state: String, // use your screen's ViewState
+    onClickFileAttachments: () -> Unit,
+    onClickMediaAttachments: () -> Unit,
+    onClickBack: () -> Unit
 ) = Column(
     modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
         .padding(16.dp).imePadding(),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
+    verticalArrangement = Arrangement.SpaceAround
 ) {
     Text(
         text = "ChannelInfoScreen",
         style = typography.headlineMedium,
         color = colorScheme.onBackground
     )
+    Text(
+        text = "channelId: $state",
+        style = typography.bodyMedium,
+        color = colorScheme.onBackground
+    )
+    Button(
+        onClick = onClickFileAttachments,
+    ) {
+        Text("File Attachments")
+    }
+    Button(
+        onClick = onClickMediaAttachments,
+    ) {
+        Text("Media Attachments")
+    }
+    Button(
+        onClick = onClickBack,
+    ) {
+        Text("Back")
+    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun ChannelInfoScreenPreview() = PersonaIMTheme {
     Box(Modifier.background(colorScheme.background)) {
-        ChannelInfoScreenContent(Unit)
+        ChannelInfoScreenContent("channel123", {}, {}, {})
     }
 }
