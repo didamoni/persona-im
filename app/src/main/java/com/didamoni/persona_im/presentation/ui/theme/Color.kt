@@ -1,4 +1,4 @@
-package com.didamoni.persona_im.ui.theme
+package com.didamoni.persona_im.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
