@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
@@ -24,14 +25,18 @@ import androidx.compose.ui.unit.dp
 import com.didamoni.persona_im.presentation.ui.theme.PersonaIMTheme
 
 @Composable
-fun PrivacyScreen() {
+fun PrivacyScreen(
+    onClickBack: () -> Unit
+) {
     var state by remember { mutableStateOf(Unit) }
-    PrivacyScreenContent(state)
+
+    PrivacyScreenContent(state, onClickBack)
 }
 
 @Composable
 private fun PrivacyScreenContent(
-    state: Unit // use your screen's ViewState
+    state: Unit, // use your screen's ViewState
+    onClickBack: () -> Unit
 ) = Column(
     modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
         .padding(16.dp).imePadding(),
@@ -43,12 +48,17 @@ private fun PrivacyScreenContent(
         style = typography.headlineMedium,
         color = colorScheme.onBackground
     )
+    Button(
+        onClick = onClickBack,
+    ) {
+        Text("Back")
+    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun PrivacyScreenPreview() = PersonaIMTheme {
     Box(Modifier.background(colorScheme.background)) {
-        PrivacyScreenContent(Unit)
+        PrivacyScreenContent(Unit) {}
     }
 }

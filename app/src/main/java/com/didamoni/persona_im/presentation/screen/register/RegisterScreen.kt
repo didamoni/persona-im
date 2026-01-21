@@ -1,6 +1,7 @@
 package com.didamoni.persona_im.presentation.screen.register
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
@@ -23,30 +25,46 @@ import androidx.compose.ui.unit.dp
 import com.didamoni.persona_im.presentation.ui.theme.PersonaIMTheme
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    onRegister: () -> Unit,
+    onLogout: () -> Unit
+) {
     var state by remember { mutableStateOf(Unit) }
-    RegisterScreenContent(state)
+    RegisterScreenContent(state, onRegister, onLogout)
 }
 
 @Composable
 private fun RegisterScreenContent(
-    state: Unit // use your screen's ViewState
+    state: Unit, // use your screen's ViewState
+    onClickRegister: () -> Unit,
+    onClickBack: () -> Unit
 ) = Column(
     modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
         .padding(16.dp).imePadding(),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
+    verticalArrangement = Arrangement.SpaceAround
 ) {
     Text(
         text = "RegisterScreen",
         style = typography.headlineMedium,
         color = colorScheme.onBackground
     )
+    Button(
+        onClick = onClickRegister,
+    ) {
+        Text("Register")
+    }
+    Button(
+        onClick = onClickBack,
+    ) {
+        Text("Back")
+    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun RegisterScreenPreview() = PersonaIMTheme {
     Box(Modifier.background(colorScheme.background)) {
-        RegisterScreenContent(Unit)
+        RegisterScreenContent(Unit, {}, {})
     }
 }
