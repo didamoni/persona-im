@@ -1,4 +1,4 @@
-package com.didamoni.persona_im.presentation.screen.main
+package com.didamoni.persona_im.presentation.screen.main.about
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,16 +25,16 @@ import androidx.compose.ui.unit.dp
 import com.didamoni.persona_im.presentation.ui.theme.PersonaIMTheme
 
 @Composable
-fun SettingsScreen(
+fun AboutScreen(
     onClickBack: () -> Unit
 ) {
     var state by remember { mutableStateOf(Unit) }
 
-    SettingsScreenContent(state, onClickBack)
+    AboutScreenContent(state, onClickBack)
 }
 
 @Composable
-private fun SettingsScreenContent(
+private fun AboutScreenContent(
     state: Unit, // use your screen's ViewState
     onClickBack: () -> Unit
 ) = Column(
@@ -44,12 +44,12 @@ private fun SettingsScreenContent(
     verticalArrangement = Arrangement.SpaceAround
 ) {
     Text(
-        text = "SettingsScreen",
+        text = "AboutScreen",
         style = typography.headlineMedium,
         color = colorScheme.onBackground
     )
     Button(
-        onClick = onClickBack
+        onClick = onClickBack,
     ) {
         Text("Back")
     }
@@ -57,8 +57,8 @@ private fun SettingsScreenContent(
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun SettingsScreenPreview() = PersonaIMTheme {
+private fun AboutScreenPreview() = PersonaIMTheme {
     Box(Modifier.background(colorScheme.background)) {
-        SettingsScreenContent(Unit) {}
+        AboutScreenContent(Unit) {}
     }
 }

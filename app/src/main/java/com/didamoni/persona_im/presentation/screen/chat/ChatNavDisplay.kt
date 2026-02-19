@@ -7,12 +7,15 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.didamoni.persona_im.presentation.ui.navigation.Route.Chat
+import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun ChatNavDisplay(
     channelId: String
 ) {
     val backStack = rememberNavBackStack(Chat.Channel)
+    val viewModel = koinViewModel<ChatViewModel> { parametersOf(channelId) }
 
     NavDisplay(
         backStack = backStack,
@@ -23,13 +26,13 @@ fun ChatNavDisplay(
         entryProvider = entryProvider {
             entry<Chat.Channel> {
                 ChannelScreen(
-                    channelId = channelId,
+                    viewModel = viewModel,
                     onClickChannelInfo = { backStack.add(Chat.ChannelInfo) }
                 )
             }
             entry<Chat.ChannelInfo> {
                 ChannelInfoScreen(
-                    channelId = channelId,
+                    viewModel = viewModel,
                     onClickFileAttachments = { backStack.add(Chat.FileAttachments) },
                     onClickMediaAttachments = { backStack.add(Chat.MediaAttachments) },
                     onClickBack = { backStack.removeLastOrNull() }

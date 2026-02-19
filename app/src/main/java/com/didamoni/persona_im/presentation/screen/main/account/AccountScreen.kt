@@ -1,4 +1,4 @@
-package com.didamoni.persona_im.presentation.screen.main
+package com.didamoni.persona_im.presentation.screen.main.account
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,29 +15,26 @@ import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.didamoni.persona_im.presentation.ui.theme.PersonaIMTheme
 
 @Composable
-fun NewChatScreen(
-    onCreateChat: (channelId: String) -> Unit,
+fun AccountScreen(
+    viewModel: AccountViewModel,
     onClickBack: () -> Unit
 ) {
-    var state by remember { mutableStateOf(Unit) }
+    val state by viewModel.state.collectAsStateWithLifecycle()
 
-    NewChatScreenContent(state, onCreateChat, onClickBack)
+    AccountScreenContent(state, onClickBack)
 }
 
 @Composable
-private fun NewChatScreenContent(
+private fun AccountScreenContent(
     state: Unit, // use your screen's ViewState
-    onCreateChat: (channelId: String) -> Unit,
     onClickBack: () -> Unit
 ) = Column(
     modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
@@ -46,15 +43,10 @@ private fun NewChatScreenContent(
     verticalArrangement = Arrangement.SpaceAround
 ) {
     Text(
-        text = "NewChatScreen",
+        text = "AccountScreen",
         style = typography.headlineMedium,
         color = colorScheme.onBackground
     )
-    Button(
-        onClick = { onCreateChat("new_channel_id") },
-    ) {
-        Text("Create Chat")
-    }
     Button(
         onClick = onClickBack,
     ) {
@@ -64,8 +56,8 @@ private fun NewChatScreenContent(
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun NewChatScreenPreview() = PersonaIMTheme {
+private fun AccountScreenPreview() = PersonaIMTheme {
     Box(Modifier.background(colorScheme.background)) {
-        NewChatScreenContent(Unit, {}, {})
+        AccountScreenContent(Unit) {}
     }
 }

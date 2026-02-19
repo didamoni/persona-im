@@ -7,6 +7,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.didamoni.persona_im.presentation.ui.navigation.Route.Auth
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AuthNavDisplay(
@@ -14,6 +15,7 @@ fun AuthNavDisplay(
     onSignup: () -> Unit,
 ) {
     val backStack = rememberNavBackStack(Auth.Login)
+    val viewModel = koinViewModel<AuthViewModel>()
 
     NavDisplay(
         backStack = backStack,
@@ -24,12 +26,14 @@ fun AuthNavDisplay(
         entryProvider = entryProvider {
             entry<Auth.Login> {
                 LoginScreen(
+                    viewModel = viewModel,
                     onLoginWithGoogle = onLogin,
                     onClickLoginWithPhone = { backStack.add(Auth.PhoneAuth) }
                 )
             }
             entry<Auth.PhoneAuth> {
                 PhoneAuthScreen(
+                    viewModel = viewModel,
                     onLoginWithPhone = onSignup,
                     onClickBack = { backStack.removeLastOrNull() }
                 )

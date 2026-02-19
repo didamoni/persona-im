@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 
     alias(libs.plugins.kotlin.serialization)
+
+    alias(libs.plugins.koin.compiler)
 }
 
 android {
@@ -39,6 +41,10 @@ android {
     }
 }
 
+koinCompiler {
+    userLogs = true
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -57,6 +63,10 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.annotations)
 
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)

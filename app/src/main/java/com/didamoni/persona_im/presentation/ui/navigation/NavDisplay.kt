@@ -7,11 +7,15 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
+import com.didamoni.persona_im.presentation.MainViewModel
 import com.didamoni.persona_im.presentation.screen.auth.AuthNavDisplay
 import com.didamoni.persona_im.presentation.screen.chat.ChatNavDisplay
 import com.didamoni.persona_im.presentation.screen.loading.LoadingScreen
 import com.didamoni.persona_im.presentation.screen.main.MainNavDisplay
 import com.didamoni.persona_im.presentation.screen.register.RegisterScreen
+import com.didamoni.persona_im.presentation.screen.register.RegisterViewModel
+import org.koin.compose.viewmodel.koinActivityViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun PersonaIMNavDisplay(
@@ -36,12 +40,14 @@ fun PersonaIMNavDisplay(
             }
             entry<Route.Register> {
                 RegisterScreen(
+                    viewModel = koinViewModel<RegisterViewModel>(),
                     onRegister = { rootBackStack.clear(); rootBackStack.add(Route.Main) },
                     onLogout = { rootBackStack.clear(); rootBackStack.add(Route.Auth) }
                 )
             }
             entry<Route.Loading> {
                 LoadingScreen(
+                    viewModel = koinActivityViewModel<MainViewModel>(),
                     onConnect = { rootBackStack.clear(); rootBackStack.add(Route.Main) }
                 )
             }

@@ -1,4 +1,4 @@
-package com.didamoni.persona_im.presentation.screen.main
+package com.didamoni.persona_im.presentation.screen.main.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,25 +15,25 @@ import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.didamoni.persona_im.presentation.ui.theme.PersonaIMTheme
 
 @Composable
-fun AboutScreen(
+fun SettingsScreen(
+    viewModel: SettingsViewModel,
     onClickBack: () -> Unit
 ) {
-    var state by remember { mutableStateOf(Unit) }
-    AboutScreenContent(state, onClickBack)
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    
+    SettingsScreenContent(state, onClickBack)
 }
 
 @Composable
-private fun AboutScreenContent(
+private fun SettingsScreenContent(
     state: Unit, // use your screen's ViewState
     onClickBack: () -> Unit
 ) = Column(
@@ -43,12 +43,12 @@ private fun AboutScreenContent(
     verticalArrangement = Arrangement.SpaceAround
 ) {
     Text(
-        text = "AboutScreen",
+        text = "SettingsScreen",
         style = typography.headlineMedium,
         color = colorScheme.onBackground
     )
     Button(
-        onClick = onClickBack,
+        onClick = onClickBack
     ) {
         Text("Back")
     }
@@ -56,8 +56,8 @@ private fun AboutScreenContent(
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun AboutScreenPreview() = PersonaIMTheme {
+private fun SettingsScreenPreview() = PersonaIMTheme {
     Box(Modifier.background(colorScheme.background)) {
-        AboutScreenContent(Unit) {}
+        SettingsScreenContent(Unit) {}
     }
 }
