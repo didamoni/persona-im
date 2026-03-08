@@ -5,6 +5,10 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 
     alias(libs.plugins.koin.compiler)
+
+    alias(libs.plugins.google.services)
+
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -71,4 +75,7 @@ dependencies {
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics)
 }

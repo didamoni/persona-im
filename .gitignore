@@ -77,3 +77,6 @@ Thumbs.db
 
 # Test and coverage reports
 **/coverage/
+
+# Google Services configuration file (ignored in this public repo to prevent credential leaking)
+google-services.json
