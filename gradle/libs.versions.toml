@@ -1,18 +1,18 @@
 [versions]
 agp = "9.1.0"
-kotlin = "2.3.20-RC2"
-coreKtx = "1.17.0"
+kotlin = "2.3.20-RC3"
+coreKtx = "1.18.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 lifecycle = "2.10.0"
-activityCompose = "1.12.4"
-composeBom = "2026.02.01"
+activityCompose = "1.13.0"
+composeBom = "2026.03.00"
 
 serialization = "1.10.0"
 
-koinBom = "4.2.0-RC1"
-koinCompilerPlugin = "0.3.0"
+koinBom = "4.2.0-RC2"
+koinCompilerPlugin = "0.4.0"
 
 navigation3 = "1.0.1"
 
@@ -20,6 +20,8 @@ googleServices = "4.4.4"
 
 firebaseBom = "34.10.0"
 firebaseCrashlytics = "3.0.6"
+
+kermit = "2.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,6 +51,9 @@ androidx-lifecycle-viewmodel-navigation3 = { group = "androidx.lifecycle", name 
 
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+kermit-crashlytics = { module = "co.touchlab:kermit-crashlytics", version.ref = "kermit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
