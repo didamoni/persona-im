@@ -14,13 +14,13 @@ plugins {
 android {
     namespace = "com.didamoni.persona_im"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
         applicationId = "com.didamoni.persona_im"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -44,10 +44,6 @@ android {
         compose = true
         buildConfig = true
     }
-}
-
-koinCompiler {
-    userLogs = true
 }
 
 dependencies {

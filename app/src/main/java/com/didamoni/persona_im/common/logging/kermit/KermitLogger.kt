@@ -13,7 +13,6 @@ object KermitLogger : Logger {
 
     init {
         TouchLabLogger.apply {
-            @Suppress("KotlinConstantConditions")
             if (BuildConfig.DEBUG) {
                 val callerIgnoreList = listOf(Logger::class, Log::class, KermitLogger::class)
                 val debugWriter = StackTraceLogWriter(callerIgnoreList)

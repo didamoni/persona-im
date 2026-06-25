@@ -19,8 +19,6 @@ class PersonaIMApp : Application() {
 
         startKoin<PersonaIMApp> {
             androidContext(this@PersonaIMApp)
-
-            @Suppress("KotlinConstantConditions")
             if (BuildConfig.DEBUG) androidLogger(Level.DEBUG)
         }
     }
