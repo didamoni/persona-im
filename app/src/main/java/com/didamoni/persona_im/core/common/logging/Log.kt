@@ -1,4 +1,4 @@
-package com.didamoni.persona_im.common.logging
+package com.didamoni.persona_im.core.common.logging
 
 object Log : Logger {
     @Volatile

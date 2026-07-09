@@ -1,8 +1,9 @@
-package com.didamoni.persona_im
+package com.didamoni.persona_im.app
 
 import android.app.Application
-import com.didamoni.persona_im.common.logging.Log
-import com.didamoni.persona_im.common.logging.kermit.KermitLogger
+import com.didamoni.persona_im.BuildConfig
+import com.didamoni.persona_im.core.common.logging.Log
+import com.didamoni.persona_im.core.common.logging.kermit.KermitLogger
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.annotation.KoinApplication

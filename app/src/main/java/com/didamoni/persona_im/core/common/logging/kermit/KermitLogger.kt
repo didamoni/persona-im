@@ -1,11 +1,11 @@
-package com.didamoni.persona_im.common.logging.kermit
+package com.didamoni.persona_im.core.common.logging.kermit
 
 import co.touchlab.kermit.ExperimentalKermitApi
 import co.touchlab.kermit.Severity
 import co.touchlab.kermit.crashlytics.CrashlyticsLogWriter
 import com.didamoni.persona_im.BuildConfig
-import com.didamoni.persona_im.common.logging.Log
-import com.didamoni.persona_im.common.logging.Logger
+import com.didamoni.persona_im.core.common.logging.Log
+import com.didamoni.persona_im.core.common.logging.Logger
 import co.touchlab.kermit.Logger as TouchLabLogger
 
 @OptIn(ExperimentalKermitApi::class)

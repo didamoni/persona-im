@@ -1,4 +1,4 @@
-package com.didamoni.persona_im.common.logging.kermit
+package com.didamoni.persona_im.core.common.logging.kermit
 
 import co.touchlab.kermit.BaseLogger
 import co.touchlab.kermit.LogWriter

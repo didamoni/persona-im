@@ -1,4 +1,4 @@
-package com.didamoni.persona_im.common.logging.kermit
+package com.didamoni.persona_im.core.common.logging.kermit
 
 /**
  * Defines how stack trace information should be converted into displayable strings.

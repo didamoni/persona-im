@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.didamoni.persona_im.common.result
+package com.didamoni.persona_im.core.common.result
 
 /**
  * A wrapper representing the outcome of an operation that resulted in either a [Success] containing data [D],
